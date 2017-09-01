@@ -1,0 +1,63 @@
+<div class="container">
+    <br/>
+    <h4>Contact App</h4>
+    <form #userForm="ngForm" class="form-group" (ngSubmit)="onSubmit(userForm.value.Fname)" (keydown.enter)="$event.preventDefault()" novalidate>
+        <div>
+        <label>Firstname:</label>
+    <input type="text" #fname="ngModel" required class="form-control" name="Fname" [(ngModel)]="refFirst" > <br/>
+    <div *ngIf="fname.errors && (fname.dirty || fname.touched)" class="alert alert-danger">   
+    <div [hidden]="!fname.errors.required" >
+            Please Enter Your firstname
+   </div>
+   </div>
+       <label>Lastname:</label>
+    <input type="text" required class="form-control" name="Lname" [(ngModel)]="refLast"><br/>
+    <label>Mail:</label>
+    <input type="text"  class="form-control" name="Email" [(ngModel)]="refMail"><br/>
+    <div>
+    <label>Number:</label>
+    <input type="text" #refNum="ngModel" required pattern="^[1-9][0-9]{9}" class="form-control" name="Numb" [(ngModel)]="refNumber"><br/>
+    <div *ngIf="refNum.errors && (refNum.dirty || refNum.touched)" class="alert alert-danger">   
+    <div [hidden]="!refNum.errors.required" >
+            Please Enter Mobile Number
+   </div>
+         <div [hidden]="!refNum.errors.pattern" >
+            Please Enter 10 digit Mobile Number
+   </div>
+        </div>
+        </div>
+        <button type="button" (click)="addData()"  class="btn btn-primary">Add</button>
+</div>  <br/>
+    <div [hidden]="makeedithidden">
+<button type="button" (click)="editData()" class="btn btn-primary">Edit</button>
+</div>
+<div [hidden]="makedonehidden"> 
+<button type="button" (click)="editData()"  class="btn btn-primary">Done</button>
+</div><br/>
+<div > 
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Mail</th>
+            <th>Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let userData of UserDetails;let index = index;trackBy:trackByIndex">
+                <td [hidden]="makeInputenable" >{{userData.firstname}} </td>
+                <td [hidden]="makeInputenable1"><input type="text" [(ngModel)]="userData.firstname" name="fname{{index}}" ></td>
+                <td [hidden]="makeInputenable" >{{userData.lastname}}</td>
+                <td [hidden]="makeInputenable1"><input type="text" [(ngModel)]="userData.lastname" name="lname{{index}}" ></td>
+                <td [hidden]="makeInputenable">{{userData.mail}}</td>
+                <td [hidden]="makeInputenable1"><input type="text" [(ngModel)]="userData.mail" name="email{{index}}" ></td>
+                <td [hidden]="makeInputenable">{{userData.number}}</td>
+                <td [hidden]="makeInputenable1"><input type="text" [(ngModel)]="userData.number" name="number{{index}}" ></td>
+                </tr>
+            </tbody>
+    </table>  
+</form>
+    </div>

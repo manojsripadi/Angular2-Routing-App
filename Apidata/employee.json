@@ -1,0 +1,14 @@
+[
+[
+              {"id":1,"name":"Manoj","age":25,"dept":"javascript"},
+               {"id":2,"name":"Sravs","age":24,"dept":"MBA"},
+               {"id":3,"name":"Kavya","age":26,"dept":"Testing"},
+               {"id":4,"name":"Adams","age":28,"dept":"Java"}
+],
+  [          
+    {"dpt":"Human Resource","id":1},
+    {"dpt":"Testing","id":2},
+    {"dpt":"Development","id":3},
+    {"dpt":"Management","id":4}
+] 
+  ]
